@@ -1,30 +1,32 @@
 import logo from '../logo.svg';
 import '../App.css';
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col, Typography, Space } from 'antd';
+import { useDispatch } from "react-redux";
+import { SET_USER } from '../actions/globalActions';
 
 function Splash() {
   const { Title } = Typography;
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
 
   return (
     <Space className="App">
-        <Title style={{color: 'white'}}>
-          KudoCoin
-        </Title>
-        <Row>
-          <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
-          <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
-          <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
-        </Row>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Login with Github
-        </a>
+      <Title style={{ color: 'white' }}>
+        KudoCoin
+      </Title>
+      <Row>
+        <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
+        <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
+        <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
+      </Row>
+      <a
+        className="App-link"
+        onClick={() => {
+          dispatch({ type: SET_USER, payload: { id: "123", name: "Harin", email: "" } });
+        }}
+      >
+        Login with Github
+      </a>
     </Space>
   );
 }
