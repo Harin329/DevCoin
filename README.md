@@ -1,1 +1,1 @@
-# DevCoin
+# KudoCoin

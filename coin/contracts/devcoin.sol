@@ -4,7 +4,7 @@ interface tokenRecipient {
     function receiveApproval(address _from, uint256 _value, address _token, bytes calldata _extraData) external; 
 }
 
-contract DevCoin {
+contract KudoCoin {
     string public name;
     string public symbol;
     uint8 public decimals = 18;
