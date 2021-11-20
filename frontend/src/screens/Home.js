@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <Row className="Home">
-      <Col span={10} >
+      <Col span={10}>
         <Row>
           <Title style={{ color: '#1C2368', textAlign: 'left' }}>
             Welcome {user.name},
@@ -20,7 +20,7 @@ function Home() {
           <Text>Your current balance is </Text>
         </Row>
         <Row>
-          <Text style={{ fontSize: 88, fontWeight: 'bold' }}>247 kcn </Text>
+          <Text style={{ fontSize: 120, fontWeight: 'bold' }}>247 <Text style={{ fontSize: 88, fontWeight: 'bold' }}>kcn</Text></Text>
         </Row>
         <Row>
           <Text>Your wallet address</Text>
@@ -38,13 +38,14 @@ function Home() {
         <Space direction={'vertical'} style={{ width: '100%' }}>
           <Row>
             <Col span={24}>
-              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 329, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 45 }}>
+              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 350, display: 'flex', padding: 20, borderRadius: 45 }}>
+              <Text style={{color: 'white'}}>Exchanges</Text>
               </div>
             </Col>
           </Row>
           <Row>
             <Col span={24}>
-              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 329, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 45 }}>
+              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 350, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 45 }}>
               </div>
             </Col>
           </Row>
