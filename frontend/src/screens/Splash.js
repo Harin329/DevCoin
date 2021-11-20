@@ -20,7 +20,6 @@ function Splash() {
         <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
       </Row>
       <a
-        className="App-link"
         onClick={() => {
           dispatch({ type: SET_USER, payload: { id: "123", name: "Harin", email: "" } });
         }}

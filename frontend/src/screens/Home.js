@@ -5,28 +5,52 @@ import { useSelector } from "react-redux";
 import { Row, Col, Typography, Space } from 'antd';
 
 function Home() {
-  const { Title } = Typography;
+  const { Title, Text } = Typography;
   const user = useSelector(state => state.global.user);
 
   return (
-    <Space className="App">
-      <Title style={{ color: 'white' }}>
-        Welcome {user.name},
-      </Title>
-      <Row>
-        <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
-        <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
-        <Col span={8}><img src={logo} className="App-logo" alt="logo" /></Col>
-      </Row>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </Space>
+    <Row className="Home">
+      <Col span={10} >
+        <Row>
+          <Title style={{ color: '#1C2368', textAlign: 'left' }}>
+            Welcome {user.name},
+          </Title>
+        </Row>
+        <Row>
+          <Text>Your current balance is </Text>
+        </Row>
+        <Row>
+          <Text style={{ fontSize: 88, fontWeight: 'bold' }}>247 kcn </Text>
+        </Row>
+        <Row>
+          <Text>Your wallet address</Text>
+        </Row>
+        <Row>
+          <Text>xxxxxxxxxxxxxxxxxxxxxxx</Text>
+        </Row>
+        <Row>
+          <div style={{ backgroundColor: '#1C2368', width: 329, height: 329, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 45 }}>
+            <img src={logo} className="App-logo" alt="logo" />
+          </div>
+        </Row>
+      </Col>
+      <Col span={14}>
+        <Space direction={'vertical'} style={{ width: '100%' }}>
+          <Row>
+            <Col span={24}>
+              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 329, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 45 }}>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 329, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 45 }}>
+              </div>
+            </Col>
+          </Row>
+        </Space>
+      </Col>
+    </Row>
   );
 }
 
