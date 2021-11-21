@@ -5,7 +5,10 @@ const cookieSession = require('cookie-session')
 const passport = require('passport');
 const cors = require('cors');
 require('./passport')
+
+const axios = require('axios');
 const isLoggedIn = require('./middleware/auth')
+
 
 var corsOptions = {
     origin: 'http://localhost:3000',
@@ -22,12 +25,13 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json());
 
 app.get('/',(req,res)=>{
     res.send(`Hello world`)
 })
 
-app.get('/api/user',isLoggedIn, (req,res)=>{
+app.get('/api/user', isLoggedIn, (req,res)=>{
     console.log(req.user);
     // res.send(`Hello world ${req.user.displayName}`)
     res.send(req.user);
@@ -38,6 +42,32 @@ app.get('/api/logout', (req, res) => {
     req.session = null;
     req.logout();
     res.redirect('http://localhost:3000/');
+})
+
+app.post('/api/address/create', async (req, res) => {
+
+    const {github_id, network_address} = req.body;
+    try {
+    const data = await axios({
+        method: 'post',
+        url: 'http://localhost:7000/updateUser',
+        data: {
+          github_id,
+          network_address
+        }
+    });
+    res.send(data.data);
+    } catch(e) {
+        console.log(e)
+    } 
+});
+
+app.get('/api/userMapping', async (req,res) => {
+    const data = await axios({
+        method: 'get',
+        url: 'http://localhost:7000/userMapping',
+    });
+    res.send(data.data);
 })
 
 app.get('/api/auth/error', (req, res) => res.send('Unknown Error'))
