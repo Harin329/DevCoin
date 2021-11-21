@@ -15,7 +15,7 @@ function App() {
         {user.id ?
             <Routes>
               <Route exact path="/" element={<Home/>} />
-              <Route exact path="/user/:id" element={<User/>} />
+              <Route path="user/:userId" element={<User />} />
             </Routes>
           : 
           <Routes>
