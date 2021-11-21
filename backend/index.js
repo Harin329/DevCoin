@@ -5,8 +5,10 @@ const cookieSession = require('cookie-session')
 const passport = require('passport');
 const cors = require('cors');
 require('./passport')
+
 const axios = require('axios');
-const isLoggedIn = require('./Middleware/auth')
+const isLoggedIn = require('./middleware/auth')
+
 
 var corsOptions = {
     origin: 'http://localhost:3000',
