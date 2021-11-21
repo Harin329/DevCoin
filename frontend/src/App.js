@@ -8,17 +8,20 @@ function App() {
   const user = useSelector(state => state.global.user);
 
   return (
-    <div>
-      {user.id === ""
-        && Splash()}
-      {user.id !== "" &&
-        <Router>
+    <Router>
+      <div>
+        {console.log(user.id)}
+        {user.id ?
+            <Routes>
+              <Route exact path="/" element={<Home/>} />
+            </Routes>
+          : 
           <Routes>
-            <Route exact path="/" element={<Home />} />
+            <Route exact path="/" element={<Splash />} />
           </Routes>
-        </Router>
-      }
-    </div>
+        }
+      </div>
+    </Router>
   );
 }
 

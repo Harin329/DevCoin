@@ -1,12 +1,26 @@
 import '../App.css';
 import React from "react";
 import { useSelector } from "react-redux";
-import { Row, Col, Typography, Space } from 'antd';
+import { Row, Col, Typography, Space, Button } from 'antd';
 import QRCode from "react-qr-code";
+
+import { SET_USER } from '../actions/globalActions';
+import { useDispatch } from "react-redux";
+import axios from 'axios';
 
 function Home() {
   const { Title, Text } = Typography;
   const user = useSelector(state => state.global.user);
+  const dispatch = useDispatch();
+
+  async function logout() {
+    try {
+      await axios.get(`http://localhost:5000/api/logout`, {withCredentials: true})
+      dispatch({ type: SET_USER, payload: { id: "", name: "", email: "" } });
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <Row className="Home">
@@ -50,9 +64,15 @@ function Home() {
               </div>
             </Col>
           </Row>
+          <Row>
+            <Button onClick={()=> logout()}> 
+              Logout
+            </Button>
+          </Row>
         </Space>
       </Col>
     </Row>
+
   );
 }
 
