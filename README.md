@@ -1,1 +1,4 @@
 # KudoCoin
+
+## Contract Address:
+0xaf36436A41D254D64c26B90EBc112A0c966f2539

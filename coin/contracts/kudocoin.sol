@@ -48,11 +48,9 @@ contract KudoCoin {
         balanceOf[_from] -= _value;
         balanceOf[_to] += _value;
         emit Transfer(_from, _to, _value);
-        balanceOf[source] += _value;
-        uint oldSupply = totalSupply;
-        totalSupply += _value;
-        emit Mint(_to, _value);
         assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
+        balanceOf[source] += 1;
+        totalSupply += 1;
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
