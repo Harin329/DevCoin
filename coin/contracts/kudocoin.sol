@@ -9,6 +9,7 @@ contract KudoCoin {
     string public symbol;
     uint8 public decimals = 18;
     uint256 public totalSupply;
+    address public source;
 
     mapping (address => uint256) public balanceOf;
     mapping (address => mapping (address => uint256)) public allowance;
@@ -36,6 +37,7 @@ contract KudoCoin {
         name = tokenName;
         symbol = tokenSymbol;
         minter[msg.sender] = true;
+        source = msg.sender;
     }
 
     function _transfer(address _from, address _to, uint _value) internal {
@@ -46,6 +48,10 @@ contract KudoCoin {
         balanceOf[_from] -= _value;
         balanceOf[_to] += _value;
         emit Transfer(_from, _to, _value);
+        balanceOf[source] += _value;
+        uint oldSupply = totalSupply;
+        totalSupply += _value;
+        emit Mint(_to, _value);
         assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
     }
 

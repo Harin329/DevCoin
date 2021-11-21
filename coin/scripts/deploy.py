@@ -3,7 +3,7 @@ from brownie import accounts, KudoCoin, config
 
 initial_supply = 1000000000000000000000  # 1000
 token_name = "KudoCoin"
-token_symbol = "DEV"
+token_symbol = "KCN"
 
 
 def main():

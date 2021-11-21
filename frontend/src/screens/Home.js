@@ -1,8 +1,8 @@
-import logo from '../logo.svg';
 import '../App.css';
 import React from "react";
 import { useSelector } from "react-redux";
 import { Row, Col, Typography, Space } from 'antd';
+import QRCode from "react-qr-code";
 
 function Home() {
   const { Title, Text } = Typography;
@@ -26,11 +26,11 @@ function Home() {
           <Text>Your wallet address</Text>
         </Row>
         <Row>
-          <Text>xxxxxxxxxxxxxxxxxxxxxxx</Text>
+          <Text style={{marginBottom: 30, fontSize: 18}}>{user.id}</Text>
         </Row>
         <Row>
-          <div style={{ backgroundColor: '#1C2368', width: 329, height: 329, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 45 }}>
-            <img src={logo} className="App-logo" alt="logo" />
+          <div style={{ border: '10px solid #1C2368', width: 329, height: 329, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 45 }}>
+          <QRCode value={user.id}/>
           </div>
         </Row>
       </Col>
@@ -38,14 +38,15 @@ function Home() {
         <Space direction={'vertical'} style={{ width: '100%' }}>
           <Row>
             <Col span={24}>
-              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 350, display: 'flex', padding: 20, borderRadius: 45 }}>
+              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 370, display: 'flex', padding: 20, borderRadius: 45 }}>
               <Text style={{color: 'white'}}>Exchanges</Text>
               </div>
             </Col>
           </Row>
           <Row>
             <Col span={24}>
-              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 350, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 45 }}>
+              <div style={{ backgroundColor: '#1C2368', width: '100%', height: 370, display: 'flex', padding: 20, borderRadius: 45 }}>
+              <Text style={{color: 'white'}}>Stat Graph</Text>
               </div>
             </Col>
           </Row>
